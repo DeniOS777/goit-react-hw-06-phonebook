@@ -4,7 +4,7 @@ import { deleteContact } from '../../redux/contacts/contactsActions';
 import ContactItem from '../ContactItem';
 import { ContactsList } from './ContactList.styled';
 
-const ContactList = ({ onDeleteContact }) => {
+const ContactList = () => {
   const filterValue = useSelector(state => state.contacts.filter);
   const contacts = useSelector(state => state.contacts.items);
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const ContactList = ({ onDeleteContact }) => {
           id={id}
           name={name}
           number={number}
-          onDeleteContact={onDeleteContact}
+          onDeleteContact={() => dispatch(deleteContact(id))}
         />
       ))}
     </ContactsList>
