@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contacts/contactsActions';
+import { getContacts } from '../../redux/contacts/selectors';
 import { Form, Label, Input, AddContact } from './ContactForm.styled';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const inputNameId = nanoid();
@@ -27,8 +31,17 @@ const ContactForm = () => {
     }
   };
 
+  const normalizeFindDuplicateContacts = contacts.find(
+    contact => contact.name.toLowerCase() === name.toLowerCase()
+  );
+
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (normalizeFindDuplicateContacts) {
+      resetForm();
+      return toast.info(`${name} is already in contacts`);
+    }
     dispatch(addContact(name, number));
     resetForm();
   };
@@ -70,19 +83,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-
-// const addContact = (name, number) => {
-//   const normalizeFindDuplicateContacts = contacts.find(
-//     contact => contact.name.toLowerCase() === name.toLowerCase()
-//   );
-
-//   if (normalizeFindDuplicateContacts) {
-//     return toast.info(`${name} is already in contacts`);
-//   }
-//   const newContact = {
-//     id: nanoid(),
-//     name,
-//     number,
-//   };
-//   setContacts(state => [newContact, ...state]);
-// };

@@ -1,13 +1,9 @@
-// import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
 import { Box } from './Box';
 
 const App = () => {
-  // const [contacts, setContacts] = useState([]);
-
   // const clearFilterField = () => setFilter('');
 
   // const deleteContact = contactId => {
