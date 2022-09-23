@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,21 +7,13 @@ import ContactList from './ContactList';
 import Filter from './Filter';
 import { Box } from './Box';
 
-const LS_KEY = 'contacts';
-
 const App = () => {
-  const [contacts, setContacts] = useState(
-    () => JSON.parse(window.localStorage.getItem(LS_KEY)) ?? []
-  );
+  const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    window.localStorage.setItem(LS_KEY, JSON.stringify(contacts));
-  }, [contacts]);
 
   const handleChangeFilter = e => setFilter(e.target.value);
 
-  const clearFilterField = () => setFilter('');
+  // const clearFilterField = () => setFilter('');
 
   const addContact = (name, number) => {
     const normalizeFindDuplicateContacts = contacts.find(
@@ -42,20 +34,20 @@ const App = () => {
   const deleteContact = contactId => {
     setContacts(state => state.filter(({ id }) => id !== contactId));
 
-    const hasFilteredContacts =
-      getFilteredContacts().length - 1 === 0 && filter !== '';
+    // const hasFilteredContacts =
+    //   getFilteredContacts().length - 1 === 0 && filter !== '';
 
-    if (hasFilteredContacts) {
-      clearFilterField();
-    }
+    // if (hasFilteredContacts) {
+    //   clearFilterField();
+    // }
   };
 
-  function getFilteredContacts() {
+  const getFilteredContacts = () => {
     const normalizeFilter = filter.toLowerCase();
     return contacts.filter(({ name }) =>
       name.toLowerCase().includes(normalizeFilter)
     );
-  }
+  };
 
   const filteredContacts = getFilteredContacts();
 
