@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { nanoid } from 'nanoid';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
@@ -9,27 +8,11 @@ import { Box } from './Box';
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
+  // const [filter, setFilter] = useState('');
 
-  const handleChangeFilter = e => setFilter(e.target.value);
+  // const handleChangeFilter = e => setFilter(e.target.value);
 
   // const clearFilterField = () => setFilter('');
-
-  const addContact = (name, number) => {
-    const normalizeFindDuplicateContacts = contacts.find(
-      contact => contact.name.toLowerCase() === name.toLowerCase()
-    );
-
-    if (normalizeFindDuplicateContacts) {
-      return toast.info(`${name} is already in contacts`);
-    }
-    const newContact = {
-      id: nanoid(),
-      name,
-      number,
-    };
-    setContacts(state => [newContact, ...state]);
-  };
 
   const deleteContact = contactId => {
     setContacts(state => state.filter(({ id }) => id !== contactId));
@@ -42,14 +25,14 @@ const App = () => {
     // }
   };
 
-  const getFilteredContacts = () => {
-    const normalizeFilter = filter.toLowerCase();
-    return contacts.filter(({ name }) =>
-      name.toLowerCase().includes(normalizeFilter)
-    );
-  };
+  // const getFilteredContacts = () => {
+  //   const normalizeFilter = filter.toLowerCase();
+  //   return contacts.filter(({ name }) =>
+  //     name.toLowerCase().includes(normalizeFilter)
+  //   );
+  // };
 
-  const filteredContacts = getFilteredContacts();
+  // const filteredContacts = getFilteredContacts();
 
   return (
     <Box p={4}>
@@ -57,18 +40,15 @@ const App = () => {
         Phonebook ☎️
       </Box>
 
-      <ContactForm onSubmit={addContact} />
+      <ContactForm />
 
       <Box as="h2" mb={3}>
         Contacts
       </Box>
 
-      <Filter filter={filter} onChange={handleChangeFilter} />
+      <Filter />
 
-      <ContactList
-        filteredContacts={filteredContacts}
-        onDeleteContact={deleteContact}
-      />
+      <ContactList onDeleteContact={deleteContact} />
     </Box>
   );
 };
