@@ -11,6 +11,7 @@ const Filter = () => {
     <>
       <FilterLabel>Find contacts by name:</FilterLabel>
       <InputSearch
+        autoComplete="off"
         type="text"
         name="filter"
         placeholder="Search contacts..."

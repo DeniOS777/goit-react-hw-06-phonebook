@@ -15,3 +15,14 @@ export const contactsReducer = combineReducers({
   items: itemsReducer,
   filter: filterReducer,
 });
+
+// const deleteContact = contactId => {
+//   setContacts(state => state.filter(({ id }) => id !== contactId));
+
+//   const hasFilteredContacts =
+//     getFilteredContacts().length - 1 === 0 && filter !== '';
+
+//   if (hasFilteredContacts) {
+//     clearFilterField();
+//   }
+// };
