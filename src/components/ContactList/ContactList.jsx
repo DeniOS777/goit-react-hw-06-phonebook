@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
-// import { deleteContact } from '../../redux/contacts/contactsActions';
-import { deleteContact } from '../../redux/contacts/contactsReducer';
+import { deleteContact } from '../../redux/contacts/itemsSlice';
 import ContactItem from '../ContactItem';
 import { ContactsList } from './ContactList.styled';
 import { useFilteredContacts } from '../../hooks/useFilteredContacts';

@@ -1,11 +1,11 @@
-import { combineReducers, createSlice, nanoid } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
-const itemsSlice = createSlice({
+export const itemsSlice = createSlice({
   name: 'items',
   initialState: [],
   reducers: {
     addContact: {
-      reducer: (state, { payload }) => [...state, payload],
+      reducer: (state, { payload }) => [payload, ...state],
       prepare: (name, number) => {
         const id = nanoid();
         return {
@@ -20,23 +20,6 @@ const itemsSlice = createSlice({
 });
 
 export const { addContact, deleteContact } = itemsSlice.actions;
-
-const filterSlice = createSlice({
-  name: 'filter',
-  initialState: '',
-  reducers: {
-    changeFilter(state, { payload }) {
-      return (state = payload);
-    },
-  },
-});
-
-export const { changeFilter } = filterSlice.actions;
-
-export const contactsReducer = combineReducers({
-  items: itemsSlice.reducer,
-  filter: filterSlice.reducer,
-});
 
 // const deleteContact = contactId => {
 //   setContacts(state => state.filter(({ id }) => id !== contactId));
