@@ -1,7 +1,7 @@
-import { getContacts, getFilterValue } from '../redux/contacts/selectors';
 import { useSelector } from 'react-redux';
+import { getContacts, getFilterValue } from '../redux/contacts/selectors';
 
-export const useFilteredContacts = () => {
+export const useGetFilteredContacts = () => {
   const filterValue = useSelector(getFilterValue);
   const contacts = useSelector(getContacts);
   const normalizeFilter = filterValue.toLowerCase();

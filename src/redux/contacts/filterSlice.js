@@ -7,7 +7,10 @@ export const filterSlice = createSlice({
     changeFilter(state, { payload }) {
       return (state = payload);
     },
+    resetFilter(state) {
+      return (state = '');
+    },
   },
 });
 
-export const { changeFilter } = filterSlice.actions;
+export const { changeFilter, resetFilter } = filterSlice.actions;

@@ -1,13 +1,25 @@
-import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contacts/itemsSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/contacts/itemsSlice';
 import ContactItem from '../ContactItem';
 import { ContactsList } from './ContactList.styled';
-import { useFilteredContacts } from '../../hooks/useFilteredContacts';
+import { resetFilter } from 'redux/contacts/filterSlice';
+import { useGetFilteredContacts } from 'hooks/useGetFilteredContacts';
+import { getFilterValue } from 'redux/contacts/selectors';
 
 const ContactList = () => {
   const dispatch = useDispatch();
+  const filterValue = useSelector(getFilterValue);
 
-  const filteredContacts = useFilteredContacts();
+  const filteredContacts = useGetFilteredContacts();
+
+  const clearFilter = () => {
+    const emptyFilteredContacts =
+      filteredContacts.length - 1 === 0 && filterValue !== '';
+
+    if (emptyFilteredContacts) {
+      dispatch(resetFilter());
+    }
+  };
 
   return (
     <ContactsList>
@@ -17,7 +29,10 @@ const ContactList = () => {
           id={id}
           name={name}
           number={number}
-          onDeleteContact={() => dispatch(deleteContact(id))}
+          onDeleteContact={() => {
+            dispatch(deleteContact(id));
+            clearFilter();
+          }}
         />
       ))}
     </ContactsList>

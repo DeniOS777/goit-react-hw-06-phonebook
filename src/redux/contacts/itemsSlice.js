@@ -20,14 +20,3 @@ export const itemsSlice = createSlice({
 });
 
 export const { addContact, deleteContact } = itemsSlice.actions;
-
-// const deleteContact = contactId => {
-//   setContacts(state => state.filter(({ id }) => id !== contactId));
-
-//   const hasFilteredContacts =
-//     getFilteredContacts().length - 1 === 0 && filter !== '';
-
-//   if (hasFilteredContacts) {
-//     clearFilterField();
-//   }
-// };

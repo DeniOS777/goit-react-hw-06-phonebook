@@ -1,18 +1,18 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contacts/itemsSlice';
-import { getContacts } from '../../redux/contacts/selectors';
+import { addContact } from 'redux/contacts/itemsSlice';
+import { getContacts } from 'redux/contacts/selectors';
 import { Form, Label, Input, AddContact } from './ContactForm.styled';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   const inputNameId = nanoid();
   const inputNumberId = nanoid();
