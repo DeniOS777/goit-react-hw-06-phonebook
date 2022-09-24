@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { changeFilter } from '../../redux/contacts/contactsActions';
+import { changeFilter } from '../../redux/contacts/contactsReducer';
 import { getFilterValue } from '../../redux/contacts/selectors';
 import { FilterLabel, InputSearch } from './Filter.styled';
 
