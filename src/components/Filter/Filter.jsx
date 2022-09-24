@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { changeFilter } from '../../redux/contacts/filterSlice';
-import { getFilterValue } from '../../redux/contacts/selectors';
+import { changeFilter } from 'redux/contacts/filterSlice';
+import { getFilterValue } from 'redux/contacts/selectors';
 import { FilterLabel, InputSearch } from './Filter.styled';
 
 const Filter = () => {
@@ -16,7 +16,7 @@ const Filter = () => {
         name="filter"
         placeholder="Search contacts..."
         value={filterValue}
-        onChange={e => dispatch(changeFilter(e.target.value))}
+        onChange={e => dispatch(changeFilter(e.target.value.trimStart()))}
       />
       🔎
     </>
