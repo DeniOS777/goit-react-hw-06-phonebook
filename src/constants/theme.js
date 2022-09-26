@@ -4,11 +4,13 @@ export const theme = {
     white: '#ffffff',
     green: '#0f860f',
     greenHover: '#0e7e0e',
-    red: '#c91c1c',
+    red: '#c73434',
     redHover: '#b81717',
+    lightBlue: '#4cb3d4',
     inputBorder: '#888888',
     textPlaceholder: '#929292',
     bodyBackgroundColor: '#f1f1f1',
+    contact: '#eff1f3',
   },
 
   space: [0, 2, 4, 8, 16, 20, 32, 64, 128, 256],
@@ -33,6 +35,7 @@ export const theme = {
     middle: 500,
     lightBold: 600,
     bold: 700,
+    extraBold: 900,
   },
 
   lineHeights: {

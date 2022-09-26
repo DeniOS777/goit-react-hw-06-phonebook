@@ -40,7 +40,7 @@ export const AddContact = styled.button`
   align-items: center;
   padding: ${p => p.theme.space[3]}px;
   font-size: ${p => p.theme.fontSizes.m};
-  font-weight: ${p => p.theme.fontWeights.lightBold};
+  font-weight: ${p => p.theme.fontWeights.bold};
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.green};
   border-style: none;

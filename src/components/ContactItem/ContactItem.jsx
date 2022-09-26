@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { ContactsItem, ContactName, ContactDelete } from './ContactItem.styled';
+import { VscTrash } from 'react-icons/vsc';
 
 const ContactItem = ({ name, number, onDeleteContact }) => {
   return (
@@ -8,7 +9,7 @@ const ContactItem = ({ name, number, onDeleteContact }) => {
         {name}: <a href="tel:">{number}</a>
       </ContactName>
       <ContactDelete onClick={onDeleteContact} type="button">
-        Delete
+        <VscTrash />
       </ContactDelete>
     </ContactsItem>
   );

@@ -15,12 +15,11 @@ const App = () => {
       </Box>
 
       <ContactForm />
-
       <Box as="h2" mb={3}>
         Contacts
       </Box>
-
       <Filter />
+
       {contacts.length > 0 && <ContactList />}
     </Box>
   );
