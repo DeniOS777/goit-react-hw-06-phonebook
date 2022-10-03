@@ -1,6 +1,6 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 
-export const itemsSlice = createSlice({
+export const contactsSlice = createSlice({
   name: 'items',
   initialState: [],
   reducers: {
@@ -13,10 +13,9 @@ export const itemsSlice = createSlice({
         };
       },
     },
-    deleteContact(state, { payload }) {
-      return state.filter(contact => contact.id !== payload);
-    },
+    deleteContact: (state, { payload }) =>
+      state.filter(contact => contact.id !== payload),
   },
 });
 
-export const { addContact, deleteContact } = itemsSlice.actions;
+export const { addContact, deleteContact } = contactsSlice.actions;

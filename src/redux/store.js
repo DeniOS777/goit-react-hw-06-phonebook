@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { itemsSlice } from './contacts/itemsSlice';
+import { contactsSlice } from './contacts/contactsSlice';
 import { filterSlice } from './contacts/filterSlice';
 
 const persistConfig = {
@@ -19,15 +19,14 @@ const persistConfig = {
   blacklist: ['filter'],
 };
 
-const contactsSlice = combineReducers({
-  items: itemsSlice.reducer,
+const rootReducer = combineReducers({
+  contacts: contactsSlice.reducer,
   filter: filterSlice.reducer,
 });
 
 export const store = configureStore({
-  reducer: {
-    contacts: persistReducer(persistConfig, contactsSlice),
-  },
+  reducer: persistReducer(persistConfig, rootReducer),
+
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
