@@ -56,7 +56,7 @@ const ContactForm = () => {
       <Label htmlFor={inputNameId}>Name</Label>
       <Input
         id={inputNameId}
-        placeholder="Enter contact..."
+        placeholder="Enter name..."
         type="text"
         name="name"
         value={name}
